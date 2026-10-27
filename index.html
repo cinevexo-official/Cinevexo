@@ -287,36 +287,4 @@
       document.getElementById('policyModal').classList.remove('hidden');
     }
 
-    function closePolicyModal() { document.getElementById('policyModal').classList.add('hidden'); }
-
-    // AI CHATBOX LOGIC
-    function toggleChatbox() {
-      const box = document.getElementById('chatboxModal');
-      box.classList.toggle('hidden');
-    }
-
-    function sendChatMessage() {
-      const input = document.getElementById('chatInput');
-      const text = input.value.trim();
-      if(!text) return;
-
-      const container = document.getElementById('chatMessages');
-      container.innerHTML += `<div class="bg-purple-600/20 border border-purple-500/30 p-3 rounded-2xl ml-auto max-w-[85%] text-slate-100 text-right">${text}</div>`;
-      input.value = '';
-      container.scrollTop = container.scrollHeight;
-
-      setTimeout(() => {
-        container.innerHTML += `<div class="bg-brand-card p-3 rounded-2xl max-w-[85%] text-slate-200">🤖 Got your request! Our team will add your movie or look into the issue shortly. Enjoy streaming on Cinevexo!</div>`;
-        container.scrollTop = container.scrollHeight;
-      }, 1000);
-    }
-
-    function openLoginModal() { document.getElementById('loginModal').classList.remove('hidden'); }
-    function closeLoginModal() { document.getElementById('loginModal').classList.add('hidden'); }
-    function handleLogin(e) { e.preventDefault(); alert("Logged in successfully!"); closeLoginModal(); }
-
-    renderHero();
-    renderGrid(moviesData);
-  </script>
-</body>
-</html>
+   
