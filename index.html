@@ -261,6 +261,7 @@
 
     function renderGrid(data) {
       const grid = document.getElementById('moviesGrid');
+      if(!grid) return;
       grid.innerHTML = data.map(m => `
         <div onclick="openMovieModal(${m.id})" class="group relative rounded-2xl bg-brand-surface border border-brand-border/40 overflow-hidden shadow-lg hover:border-purple-500/50 cursor-pointer transition-all">
           <div class="relative aspect-[2/3] overflow-hidden">
@@ -337,5 +338,9 @@
     function closeContactModal() { document.getElementById('contactModal').classList.add('hidden'); }
     function handleSupportSubmit(e) { e.preventDefault(); alert("Your support message has been sent successfully!"); closeContactModal(); }
 
-    // Initial Render on load
-    window.onload = funct
+    // Execute immediately when script loads
+    renderHero();
+    renderGrid(moviesData);
+  </script>
+</body>
+</html>
