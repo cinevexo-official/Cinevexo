@@ -4,69 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cinevexo - Watch & Download Movies & TV Series</title>
-  
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-  
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            brand: {
-              bg: '#0b0b14',
-              surface: '#131326',
-              card: '#1a1a36',
-              border: '#2a2a4a',
-              purple: '#a855f7',
-              pink: '#ec4899',
-            }
+            brand: { bg: '#0b0b14', surface: '#131326', card: '#1a1a36', border: '#2a2a4a', purple: '#a855f7', pink: '#ec4899' }
           },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['Montserrat', 'sans-serif'],
-          }
+          fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Montserrat', 'sans-serif'] }
         }
       }
     }
   </script>
-
   <style>
-    body {
-      background-color: #0b0b14;
-      color: #e2e8f0;
-    }
-    .text-gradient {
-      background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .bg-gradient-brand {
-      background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
-    }
-    .custom-scrollbar::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-track {
-      background: #0b0b14;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: #2a2a4a;
-      border-radius: 4px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-      background: #a855f7;
-    }
+    body { background-color: #0b0b14; color: #e2e8f0; }
+    .text-gradient { background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .bg-gradient-brand { background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%); }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #0b0b14; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #2a2a4a; border-radius: 4px; }
   </style>
 </head>
 <body class="font-sans antialiased custom-scrollbar min-h-screen flex flex-col justify-between selection:bg-purple-500 selection:text-white">
@@ -74,182 +36,107 @@
   <!-- NAVBAR -->
   <header class="sticky top-0 z-40 bg-brand-bg/90 backdrop-blur-md border-b border-brand-border/40 transition-all">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
-      
-      <!-- Brand Logo -->
       <a href="#" class="flex items-center gap-2 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-brand flex items-center justify-center text-white shadow-lg shadow-purple-500/30 group-hover:scale-105 transition-transform">
+        <div class="w-10 h-10 rounded-xl bg-gradient-brand flex items-center justify-center text-white shadow-lg shadow-purple-500/30">
           <i class="fa-solid fa-play text-lg ml-0.5"></i>
         </div>
         <span class="font-display font-extrabold text-2xl tracking-wider text-gradient uppercase">Cinevexo</span>
       </a>
-
-      <!-- Desktop Search Bar -->
       <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
         <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-        <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Search movies, series, genres..." class="w-full bg-brand-surface border border-brand-border/60 rounded-full py-2.5 pl-11 pr-4 text-sm text-slate-200 placeholder-slate-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all">
+        <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Search movies, series, genres..." class="w-full bg-brand-surface border border-brand-border/60 rounded-full py-2.5 pl-11 pr-4 text-sm text-slate-200 placeholder-slate-400 focus:outline-none focus:border-purple-500">
       </div>
-
-      <!-- Right Navigation Actions -->
-      <div class="flex items-center gap-3 sm:gap-4">
-        <button onclick="openLoginModal()" class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-surface border border-brand-border/60 hover:border-purple-500 text-sm font-medium text-slate-200 transition-all">
+      <div class="flex items-center gap-3">
+        <button onclick="openLoginModal()" class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-surface border border-brand-border/60 hover:border-purple-500 text-sm font-medium text-slate-200">
           <i class="fa-solid fa-user text-purple-400"></i> Login
         </button>
       </div>
     </div>
   </header>
 
-  <!-- MAIN CONTENT CONTAINER -->
+  <!-- MAIN CONTENT -->
   <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-10">
-
-    <!-- HERO CAROUSEL -->
     <section class="relative rounded-3xl overflow-hidden bg-brand-surface border border-brand-border/40 shadow-2xl">
       <div id="heroSlide" class="relative min-h-[420px] sm:min-h-[480px] flex items-end p-6 sm:p-12 transition-all duration-700 bg-cover bg-center" style="background-image: url('https://image.tmdb.org/t/p/original/fm6KqXpk3M2HVveHwCrBSSBaO0V.jpg');">
         <div class="absolute inset-0 bg-gradient-to-t from-brand-bg via-brand-bg/60 to-transparent"></div>
-
         <div class="relative z-10 max-w-2xl space-y-4">
           <div class="flex items-center gap-2">
-            <span id="heroQuality" class="px-2.5 py-1 text-xs font-bold rounded bg-purple-600 text-white shadow-md shadow-purple-600/30">4K UHD</span>
-            <span id="heroRating" class="px-2.5 py-1 text-xs font-semibold rounded bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center gap-1">
-              <i class="fa-solid fa-star text-xs"></i> 8.9
-            </span>
+            <span id="heroQuality" class="px-2.5 py-1 text-xs font-bold rounded bg-purple-600 text-white">4K UHD</span>
+            <span id="heroRating" class="px-2.5 py-1 text-xs font-semibold rounded bg-amber-500/20 text-amber-400 border border-amber-500/30"><i class="fa-solid fa-star text-xs"></i> 8.9</span>
           </div>
-
-          <h1 id="heroTitle" class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight leading-tight">Oppenheimer</h1>
-          <p id="heroDesc" class="text-slate-300 text-sm sm:text-base line-clamp-3">The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.</p>
-
-          <div class="flex flex-wrap items-center gap-4 pt-2">
-            <button id="heroWatchBtn" onclick="openMovieModal(1)" class="px-6 py-3 rounded-xl bg-gradient-brand text-white font-semibold flex items-center gap-2 hover:opacity-95 transition-all shadow-lg shadow-purple-500/30">
+          <h1 id="heroTitle" class="text-3xl sm:text-5xl font-display font-extrabold text-white">Oppenheimer</h1>
+          <p id="heroDesc" class="text-slate-300 text-sm sm:text-base line-clamp-3">The story of American scientist J. Robert Oppenheimer.</p>
+          <div class="flex gap-4 pt-2">
+            <button id="heroWatchBtn" onclick="openMovieModal(1)" class="px-6 py-3 rounded-xl bg-gradient-brand text-white font-semibold flex items-center gap-2 shadow-lg shadow-purple-500/30">
               <i class="fa-solid fa-play"></i> Watch / Download
             </button>
           </div>
         </div>
-
         <div class="absolute bottom-6 right-6 z-10 flex gap-2">
-          <button onclick="prevHeroSlide()" class="w-10 h-10 rounded-full bg-brand-surface/80 border border-brand-border/60 hover:bg-purple-600 text-white flex items-center justify-center transition-all">
-            <i class="fa-solid fa-chevron-left"></i>
-          </button>
-          <button onclick="nextHeroSlide()" class="w-10 h-10 rounded-full bg-brand-surface/80 border border-brand-border/60 hover:bg-purple-600 text-white flex items-center justify-center transition-all">
-            <i class="fa-solid fa-chevron-right"></i>
-          </button>
+          <button onclick="prevHeroSlide()" class="w-10 h-10 rounded-full bg-brand-surface/80 border border-brand-border/60 text-white flex items-center justify-center"><i class="fa-solid fa-chevron-left"></i></button>
+          <button onclick="nextHeroSlide()" class="w-10 h-10 rounded-full bg-brand-surface/80 border border-brand-border/60 text-white flex items-center justify-center"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
       </div>
     </section>
 
-    <!-- CATEGORY FILTER BUTTONS -->
+    <!-- CATEGORIES -->
     <section class="space-y-4">
-      <div class="flex items-center justify-between">
-        <h2 class="text-xl font-display font-bold text-white flex items-center gap-2">
-          <span class="w-2 h-6 bg-gradient-brand rounded-full"></span> Explore Library
-        </h2>
-      </div>
-
       <div class="flex items-center gap-3 overflow-x-auto pb-2 custom-scrollbar">
-        <button onclick="filterCategory('all')" class="cat-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all whitespace-nowrap bg-gradient-brand text-white shadow-lg shadow-purple-500/20">All Movies</button>
-        <button onclick="filterCategory('Featured')" class="cat-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all whitespace-nowrap bg-brand-surface text-slate-300 border border-brand-border/60 hover:border-purple-500 hover:text-white">Featured</button>
-        <button onclick="filterCategory('Most Favorite')" class="cat-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all whitespace-nowrap bg-brand-surface text-slate-300 border border-brand-border/60 hover:border-purple-500 hover:text-white">Most Favorite</button>
-        <button onclick="filterCategory('Top IMDb')" class="cat-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all whitespace-nowrap bg-brand-surface text-slate-300 border border-brand-border/60 hover:border-purple-500 hover:text-white">Top IMDb</button>
+        <button onclick="filterCategory('all')" class="px-5 py-2.5 rounded-full text-sm font-medium bg-gradient-brand text-white whitespace-nowrap">All Movies</button>
+        <button onclick="filterCategory('Featured')" class="px-5 py-2.5 rounded-full text-sm font-medium bg-brand-surface text-slate-300 border border-brand-border/60 whitespace-nowrap">Featured</button>
+        <button onclick="filterCategory('Top IMDb')" class="px-5 py-2.5 rounded-full text-sm font-medium bg-brand-surface text-slate-300 border border-brand-border/60 whitespace-nowrap">Top IMDb</button>
       </div>
     </section>
 
     <!-- MOVIE GRID -->
     <section>
-      <div id="moviesGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
-        <!-- Cards dynamically populated -->
-      </div>
+      <div id="moviesGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6"></div>
     </section>
-
   </main>
 
-  <!-- FOOTER -->
-  <footer class="mt-16 bg-brand-surface border-t border-brand-border/60 py-10">
-    <div class="max-w-7xl mx-auto px-4 text-center text-slate-400 text-sm space-y-3">
-      <div class="flex items-center justify-center gap-2">
-        <span class="font-display font-extrabold text-xl text-gradient">Cinevexo</span>
-      </div>
-      <p>© 2026 Cinevexo Streaming. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- FLOATING CONTACT BUTTON -->
-  <button onclick="openContactModal()" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gradient-brand text-white shadow-xl shadow-purple-500/40 hover:scale-110 flex items-center justify-center transition-transform">
-    <i class="fa-solid fa-headset text-xl"></i>
-  </button>
-
-  <!-- MOVIE DETAILS / DOWNLOAD MODAL -->
+  <!-- MODALS -->
   <div id="movieModal" class="fixed inset-0 z-50 hidden bg-brand-bg/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="relative w-full max-w-2xl bg-brand-surface border border-brand-border rounded-3xl p-6 shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar">
-      <button onclick="closeMovieModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 hover:text-white flex items-center justify-center">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <div id="modalContent" class="space-y-6">
-        <!-- Populated via JS -->
-      </div>
+      <button onclick="closeMovieModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+      <div id="modalContent" class="space-y-6"></div>
     </div>
   </div>
 
-  <!-- LOGIN MODAL -->
   <div id="loginModal" class="fixed inset-0 z-50 hidden bg-brand-bg/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="relative w-full max-w-md bg-brand-surface border border-brand-border rounded-3xl p-8 shadow-2xl space-y-6">
-      <button onclick="closeLoginModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 hover:text-white flex items-center justify-center">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <div class="text-center space-y-2">
-        <h3 class="text-2xl font-display font-bold text-gradient">Welcome to Cinevexo</h3>
-        <p class="text-xs text-slate-400">Sign in to sync your watchlist & preferences</p>
-      </div>
+      <button onclick="closeLoginModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+      <h3 class="text-2xl font-display font-bold text-gradient text-center">Welcome to Cinevexo</h3>
       <form onsubmit="handleLogin(event)" class="space-y-4">
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
-          <input type="email" required placeholder="user@cinevexo.com" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-purple-500">
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Password</label>
-          <input type="password" required placeholder="••••••••" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-purple-500">
-        </div>
-        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-brand text-white font-semibold shadow-lg shadow-purple-500/30 hover:opacity-95">Sign In</button>
+        <input type="email" required placeholder="Email Address" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-sm text-white">
+        <input type="password" required placeholder="Password" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-sm text-white">
+        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-brand text-white font-semibold">Sign In</button>
       </form>
     </div>
   </div>
 
-  <!-- CONTACT MODAL -->
   <div id="contactModal" class="fixed inset-0 z-50 hidden bg-brand-bg/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="relative w-full max-w-md bg-brand-surface border border-brand-border rounded-3xl p-8 shadow-2xl space-y-6">
-      <button onclick="closeContactModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 hover:text-white flex items-center justify-center">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <div class="text-center space-y-2">
-        <h3 class="text-2xl font-display font-bold text-white">Customer Support</h3>
-        <p class="text-xs text-slate-400">Need a movie added or facing issues? Send us a message.</p>
-      </div>
+      <button onclick="closeContactModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+      <h3 class="text-2xl font-display font-bold text-white text-center">Customer Support</h3>
       <form onsubmit="handleSupportSubmit(event)" class="space-y-4">
-        <div>
-          <input type="text" required placeholder="Your Name" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-purple-500">
-        </div>
-        <div>
-          <input type="email" required placeholder="Your Email" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-purple-500">
-        </div>
-        <div>
-          <textarea rows="4" required placeholder="Describe your request or movie name..." class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-purple-500"></textarea>
-        </div>
-        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-brand text-white font-semibold shadow-lg shadow-purple-500/30 hover:opacity-95">Send Message</button>
+        <input type="text" required placeholder="Your Name" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-sm text-white">
+        <input type="email" required placeholder="Your Email" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-sm text-white">
+        <textarea rows="4" required placeholder="Movie name or issue..." class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-sm text-white"></textarea>
+        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-brand text-white font-semibold">Send Message</button>
       </form>
     </div>
   </div>
 
-  <!-- JAVASCRIPT LOGIC -->
+  <button onclick="openContactModal()" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gradient-brand text-white shadow-xl flex items-center justify-center hover:scale-110"><i class="fa-solid fa-headset text-xl"></i></button>
+
+  <!-- LINK TO SEPARATE MOVIES FILE -->
+  <script src="movies.js"></script>
+
+  <!-- MAIN APP LOGIC -->
   <script>
-    const moviesData = [
-      { id: 1, title: "Oppenheimer", category: "Top IMDb", quality: "4K UHD", rating: 8.9, year: 2023, poster: "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg", backdrop: "https://image.tmdb.org/t/p/original/fm6KqXpk3M2HVveHwCrBSSBaO0V.jpg", description: "The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.", downloadLink: "#" },
-      { id: 2, title: "Dune: Part Two", category: "Featured", quality: "BluRay", rating: 8.6, year: 2024, poster: "https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg", backdrop: "https://image.tmdb.org/t/p/original/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg", description: "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators.", downloadLink: "#" },
-      { id: 3, title: "Interstellar", category: "Most Favorite", quality: "4K UHD", rating: 8.7, year: 2014, poster: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg", backdrop: "https://image.tmdb.org/t/p/original/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg", description: "When Earth becomes uninhabitable, a farmer and ex-NASA pilot is tasked to pilot a spacecraft.", downloadLink: "#" },
-      { id: 4, title: "The Batman", category: "Featured", quality: "WebRip", rating: 7.8, year: 2022, poster: "https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg", backdrop: "https://image.tmdb.org/t/p/original/b0PlSFdDwbyK0cf5RxwDpaOJQvQ.jpg", description: "When a sadistic serial killer begins murdering key political figures in Gotham, Batman investigates.", downloadLink: "#" },
-      { id: 5, title: "Spider-Man: Across the Spider-Verse", category: "Most Favorite", quality: "BluRay", rating: 8.7, year: 2023, poster: "https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg", backdrop: "https://image.tmdb.org/t/p/original/4HodYYKEIsGOdinkCi2UczTJ69I.jpg", description: "Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People.", downloadLink: "#" },
-      { id: 6, title: "Avatar: The Way of Water", category: "Featured", quality: "4K UHD", rating: 7.6, year: 2022, poster: "https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg", backdrop: "https://image.tmdb.org/t/p/original/5gzzkR7y3hnY8AD1wXjCnVlHbaV.jpg", description: "Jake Sully lives with his newfound family formed on the extrasolar moon Pandora.", downloadLink: "#" }
-    ];
-
     let currentHeroIndex = 0;
-
     function renderHero() {
+      if(!moviesData || moviesData.length === 0) return;
       const movie = moviesData[currentHeroIndex];
       document.getElementById('heroSlide').style.backgroundImage = `url('${movie.backdrop}')`;
       document.getElementById('heroTitle').innerText = movie.title;
@@ -258,7 +145,6 @@
       document.getElementById('heroRating').innerHTML = `<i class="fa-solid fa-star text-xs"></i> ${movie.rating}`;
       document.getElementById('heroWatchBtn').setAttribute('onclick', `openMovieModal(${movie.id})`);
     }
-
     function renderGrid(data) {
       const grid = document.getElementById('moviesGrid');
       if(!grid) return;
@@ -275,70 +161,33 @@
         </div>
       `).join('');
     }
-
-    function nextHeroSlide() {
-      currentHeroIndex = (currentHeroIndex + 1) % moviesData.length;
-      renderHero();
-    }
-
-    function prevHeroSlide() {
-      currentHeroIndex = (currentHeroIndex - 1 + moviesData.length) % moviesData.length;
-      renderHero();
-    }
-
-    function filterCategory(category) {
-      if(category === 'all') {
-        renderGrid(moviesData);
-      } else {
-        const filtered = moviesData.filter(m => m.category === category);
-        renderGrid(filtered);
-      }
-    }
-
-    function handleSearch(query) {
-      const q = query.toLowerCase();
-      const filtered = moviesData.filter(m => m.title.toLowerCase().includes(q) || m.description.toLowerCase().includes(q));
-      renderGrid(filtered);
-    }
-
+    function nextHeroSlide() { currentHeroIndex = (currentHeroIndex + 1) % moviesData.length; renderHero(); }
+    function prevHeroSlide() { currentHeroIndex = (currentHeroIndex - 1 + moviesData.length) % moviesData.length; renderHero(); }
+    function filterCategory(cat) { cat === 'all' ? renderGrid(moviesData) : renderGrid(moviesData.filter(m => m.category === cat)); }
+    function handleSearch(q) { renderGrid(moviesData.filter(m => m.title.toLowerCase().includes(q.toLowerCase()) || m.description.toLowerCase().includes(q.toLowerCase()))); }
     function openMovieModal(id) {
       const movie = moviesData.find(m => m.id === id);
       if(!movie) return;
-      
       document.getElementById('modalContent').innerHTML = `
         <div class="flex flex-col sm:flex-row gap-6">
           <img src="${movie.poster}" class="w-full sm:w-48 rounded-2xl object-cover shadow-lg" />
           <div class="space-y-3">
-            <div class="flex items-center gap-2">
-              <span class="px-2 py-0.5 text-xs font-bold rounded bg-purple-600 text-white">${movie.quality}</span>
-              <span class="text-amber-400 text-xs font-semibold"><i class="fa-solid fa-star"></i> ${movie.rating} (${movie.year})</span>
-            </div>
+            <div class="flex items-center gap-2"><span class="px-2 py-0.5 text-xs font-bold rounded bg-purple-600 text-white">${movie.quality}</span><span class="text-amber-400 text-xs font-semibold"><i class="fa-solid fa-star"></i> ${movie.rating}</span></div>
             <h2 class="text-2xl font-display font-bold text-white">${movie.title}</h2>
             <p class="text-sm text-slate-300">${movie.description}</p>
-            <div class="pt-4 flex gap-3">
-              <a href="${movie.downloadLink}" target="_blank" class="flex-1 py-3 px-4 rounded-xl bg-gradient-brand text-white font-semibold text-center shadow-lg shadow-purple-500/30 flex items-center justify-center gap-2">
-                <i class="fa-solid fa-download"></i> Download / Watch Link
-              </a>
-            </div>
+            <a href="${movie.downloadLink}" target="_blank" class="block w-full py-3 px-4 rounded-xl bg-gradient-brand text-white font-semibold text-center"><i class="fa-solid fa-download"></i> Download / Watch Link</a>
           </div>
-        </div>
-      `;
+        </div>`;
       document.getElementById('movieModal').classList.remove('hidden');
     }
-
-    function closeMovieModal() {
-      document.getElementById('movieModal').classList.add('hidden');
-    }
-
+    function closeMovieModal() { document.getElementById('movieModal').classList.add('hidden'); }
     function openLoginModal() { document.getElementById('loginModal').classList.remove('hidden'); }
     function closeLoginModal() { document.getElementById('loginModal').classList.add('hidden'); }
-    function handleLogin(e) { e.preventDefault(); alert("Successfully Logged In!"); closeLoginModal(); }
-
+    function handleLogin(e) { e.preventDefault(); alert("Logged in successfully!"); closeLoginModal(); }
     function openContactModal() { document.getElementById('contactModal').classList.remove('hidden'); }
     function closeContactModal() { document.getElementById('contactModal').classList.add('hidden'); }
-    function handleSupportSubmit(e) { e.preventDefault(); alert("Your support message has been sent successfully!"); closeContactModal(); }
+    function handleSupportSubmit(e) { e.preventDefault(); alert("Support message sent!"); closeContactModal(); }
 
-    // Execute immediately when script loads
     renderHero();
     renderGrid(moviesData);
   </script>
