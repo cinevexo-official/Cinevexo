@@ -101,11 +101,27 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
+  <!-- FOOTER WITH MANDATORY POLICY LINKS FOR ADSENSE -->
   <footer class="mt-16 bg-brand-surface border-t border-brand-border/60 py-10">
-    <div class="max-w-7xl mx-auto px-4 text-center text-slate-400 text-sm space-y-3">
-      <span class="font-display font-extrabold text-xl text-gradient">Cinevexo</span>
-      <p>© 2026 Cinevexo Streaming. All rights reserved.</p>
+    <div class="max-w-7xl mx-auto px-4 text-center space-y-6">
+      <div class="flex items-center justify-center gap-2">
+        <span class="font-display font-extrabold text-2xl text-gradient">Cinevexo</span>
+      </div>
+      
+      <!-- Policy Pages Links -->
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-slate-400">
+        <button onclick="openPolicyModal('about')" class="hover:text-purple-400 transition-colors">About Us</button>
+        <span>•</span>
+        <button onclick="openPolicyModal('privacy')" class="hover:text-purple-400 transition-colors">Privacy Policy</button>
+        <span>•</span>
+        <button onclick="openPolicyModal('terms')" class="hover:text-purple-400 transition-colors">Terms of Service</button>
+        <span>•</span>
+        <button onclick="openPolicyModal('dmca')" class="hover:text-purple-400 transition-colors">DMCA & Legal Disclaimer</button>
+        <span>•</span>
+        <button onclick="toggleChatbox()" class="hover:text-purple-400 transition-colors">Contact Support</button>
+      </div>
+
+      <p class="text-xs text-slate-500">© 2026 Cinevexo Streaming. All rights reserved. Free Entertainment Portal.</p>
     </div>
   </footer>
 
@@ -137,6 +153,18 @@
     </div>
   </div>
 
+  <!-- LEGAL POLICIES & ABOUT US MODAL -->
+  <div id="policyModal" class="fixed inset-0 z-50 hidden bg-brand-bg/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="relative w-full max-w-2xl bg-brand-surface border border-brand-border rounded-3xl p-6 sm:p-8 shadow-2xl max-h-[85vh] overflow-y-auto custom-scrollbar">
+      <button onclick="closePolicyModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 hover:text-white flex items-center justify-center">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div id="policyModalContent" class="space-y-4 text-slate-300 text-sm leading-relaxed">
+        <!-- Content dynamic via JS -->
+      </div>
+    </div>
+  </div>
+
   <!-- MOVIE DETAILS & DOWNLOAD MODAL -->
   <div id="movieModal" class="fixed inset-0 z-50 hidden bg-brand-bg/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="relative w-full max-w-2xl bg-brand-surface border border-brand-border rounded-3xl p-6 shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar">
@@ -151,8 +179,8 @@
       <button onclick="closeLoginModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
       <h3 class="text-2xl font-display font-bold text-gradient text-center">Welcome to Cinevexo</h3>
       <form onsubmit="handleLogin(event)" class="space-y-4">
-        <input type="email" required placeholder="Email Address" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-sm text-white">
-        <input type="password" required placeholder="Password" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-sm text-white">
+        <input type="email" required placeholder="Email Address" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-purple-500">
+        <input type="password" required placeholder="Password" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-purple-500">
         <button type="submit" class="w-full py-3 rounded-xl bg-gradient-brand text-white font-semibold">Sign In</button>
       </form>
     </div>
@@ -161,7 +189,7 @@
   <!-- LINK TO MOVIES DATA FILE -->
   <script src="movies.js"></script>
 
-  <!-- CORE APP LOGIC (NEVER NEEDS TO BE CHANGED AGAIN) -->
+  <!-- CORE APP LOGIC -->
   <script>
     let currentHeroIndex = 0;
     function renderHero() {
@@ -228,6 +256,38 @@
     }
 
     function closeMovieModal() { document.getElementById('movieModal').classList.add('hidden'); }
+
+    // LEGAL POLICY MODAL HANDLER FOR ADSENSE
+    function openPolicyModal(type) {
+      const contentDiv = document.getElementById('policyModalContent');
+      if(type === 'about') {
+        contentDiv.innerHTML = `
+          <h3 class="text-2xl font-display font-bold text-gradient">About Cinevexo</h3>
+          <p>Welcome to <strong>Cinevexo</strong>, your premier portal for movie news, trailer discovery, and entertainment indexing. Our platform aims to provide film enthusiasts with up-to-date metadata, High-Definition artwork, and comprehensive movie reviews from across global cinema.</p>
+          <p>We are dedicated to building a fast, accessible, and user-friendly web portal powered by modern web technologies.</p>`;
+      } else if(type === 'privacy') {
+        contentDiv.innerHTML = `
+          <h3 class="text-2xl font-display font-bold text-gradient">Privacy Policy</h3>
+          <p>At Cinevexo, accessible from our domain, your privacy is one of our top priorities. This Privacy Policy document contains types of information that is collected and recorded by Cinevexo and how we use it.</p>
+          <h4 class="font-bold text-white">Log Files & Cookies</h4>
+          <p>Cinevexo follows a standard procedure of using log files. These files log visitors when they visit websites. We may use third-party vendors, such as Google or Ad Networks, which use cookies to serve ads based on users' prior visits to our site.</p>
+          <h4 class="font-bold text-white">Third Party Privacy Policies</h4>
+          <p>Cinevexo's Privacy Policy does not apply to other advertisers or websites. We advise you to consult the respective Privacy Policies of these third-party ad servers for more detailed information.</p>`;
+      } else if(type === 'terms') {
+        contentDiv.innerHTML = `
+          <h3 class="text-2xl font-display font-bold text-gradient">Terms of Service</h3>
+          <p>By accessing and using <strong>Cinevexo</strong>, you accept and agree to be bound by the terms and provision of this agreement. Any participation in this service will constitute acceptance of this agreement.</p>
+          <p>All content provided on this website is for informational and educational entertainment purposes only. Users agree not to misuse the web platform or engage in unlawful activities.</p>`;
+      } else if(type === 'dmca') {
+        contentDiv.innerHTML = `
+          <h3 class="text-2xl font-display font-bold text-gradient">DMCA & Legal Disclaimer</h3>
+          <p><strong>Cinevexo</strong> operates as an automated metadata index and movie catalog website. We do <strong>NOT</strong> host, store, or upload any video files, media content, or copyrighted copyright material on our servers.</p>
+          <p>All content featured on Cinevexo is fetched via open APIs and third-party links publicly available on the internet. If you believe your copyrighted work is indexed here without authorization, please contact us via our support panel for immediate link removal within 48 hours.</p>`;
+      }
+      document.getElementById('policyModal').classList.remove('hidden');
+    }
+
+    function closePolicyModal() { document.getElementById('policyModal').classList.add('hidden'); }
 
     // AI CHATBOX LOGIC
     function toggleChatbox() {
