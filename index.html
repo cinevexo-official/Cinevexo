@@ -94,11 +94,6 @@
         <button onclick="openLoginModal()" class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-surface border border-brand-border/60 hover:border-purple-500 text-sm font-medium text-slate-200 transition-all">
           <i class="fa-solid fa-user text-purple-400"></i> Login
         </button>
-
-        <button onclick="toggleWatchlistDrawer()" class="relative p-2.5 rounded-full bg-brand-surface border border-brand-border/60 hover:border-purple-500/50 text-slate-300 hover:text-white transition-all">
-          <i class="fa-solid fa-bookmark"></i>
-          <span id="watchlistBadge" class="absolute -top-1 -right-1 bg-gradient-brand text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md">0</span>
-        </button>
       </div>
     </div>
   </header>
@@ -108,7 +103,7 @@
 
     <!-- HERO CAROUSEL -->
     <section class="relative rounded-3xl overflow-hidden bg-brand-surface border border-brand-border/40 shadow-2xl">
-      <div id="heroSlide" class="relative min-h-[420px] sm:min-h-[480px] flex items-end p-6 sm:p-12 transition-all duration-700 bg-cover bg-center">
+      <div id="heroSlide" class="relative min-h-[420px] sm:min-h-[480px] flex items-end p-6 sm:p-12 transition-all duration-700 bg-cover bg-center" style="background-image: url('https://image.tmdb.org/t/p/original/fm6KqXpk3M2HVveHwCrBSSBaO0V.jpg');">
         <div class="absolute inset-0 bg-gradient-to-t from-brand-bg via-brand-bg/60 to-transparent"></div>
 
         <div class="relative z-10 max-w-2xl space-y-4">
@@ -119,11 +114,11 @@
             </span>
           </div>
 
-          <h1 id="heroTitle" class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight leading-tight">Loading...</h1>
-          <p id="heroDesc" class="text-slate-300 text-sm sm:text-base line-clamp-3">Loading details...</p>
+          <h1 id="heroTitle" class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight leading-tight">Oppenheimer</h1>
+          <p id="heroDesc" class="text-slate-300 text-sm sm:text-base line-clamp-3">The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.</p>
 
           <div class="flex flex-wrap items-center gap-4 pt-2">
-            <button id="heroWatchBtn" onclick="openMovieModal(moviesData[currentHeroIndex].id)" class="px-6 py-3 rounded-xl bg-gradient-brand text-white font-semibold flex items-center gap-2 hover:opacity-95 transition-all shadow-lg shadow-purple-500/30">
+            <button id="heroWatchBtn" onclick="openMovieModal(1)" class="px-6 py-3 rounded-xl bg-gradient-brand text-white font-semibold flex items-center gap-2 hover:opacity-95 transition-all shadow-lg shadow-purple-500/30">
               <i class="fa-solid fa-play"></i> Watch / Download
             </button>
           </div>
@@ -243,7 +238,6 @@
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
-    // Expanded Movie Database (You can easily add your custom links here!)
     const moviesData = [
       { id: 1, title: "Oppenheimer", category: "Top IMDb", quality: "4K UHD", rating: 8.9, year: 2023, poster: "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg", backdrop: "https://image.tmdb.org/t/p/original/fm6KqXpk3M2HVveHwCrBSSBaO0V.jpg", description: "The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.", downloadLink: "#" },
       { id: 2, title: "Dune: Part Two", category: "Featured", quality: "BluRay", rating: 8.6, year: 2024, poster: "https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg", backdrop: "https://image.tmdb.org/t/p/original/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg", description: "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators.", downloadLink: "#" },
@@ -262,6 +256,7 @@
       document.getElementById('heroDesc').innerText = movie.description;
       document.getElementById('heroQuality').innerText = movie.quality;
       document.getElementById('heroRating').innerHTML = `<i class="fa-solid fa-star text-xs"></i> ${movie.rating}`;
+      document.getElementById('heroWatchBtn').setAttribute('onclick', `openMovieModal(${movie.id})`);
     }
 
     function renderGrid(data) {
@@ -305,7 +300,6 @@
       renderGrid(filtered);
     }
 
-    // Modal Controls
     function openMovieModal(id) {
       const movie = moviesData.find(m => m.id === id);
       if(!movie) return;
@@ -339,4 +333,9 @@
     function closeLoginModal() { document.getElementById('loginModal').classList.add('hidden'); }
     function handleLogin(e) { e.preventDefault(); alert("Successfully Logged In!"); closeLoginModal(); }
 
-    function openContactModal() { document.getElementById('contactModal').classList.remove('hidden'
+    function openContactModal() { document.getElementById('contactModal').classList.remove('hidden'); }
+    function closeContactModal() { document.getElementById('contactModal').classList.add('hidden'); }
+    function handleSupportSubmit(e) { e.preventDefault(); alert("Your support message has been sent successfully!"); closeContactModal(); }
+
+    // Initial Render on load
+    window.onload = funct
