@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinevexo - Watch Movies & TV Series Online</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts (Inter + Montserrat) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              bg: '#0b0b14',
+              surface: '#131326',
+              card: '#1a1a36',
+              border: '#2a2a4a',
+              purple: '#a855f7',
+              pink: '#ec4899',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Montserrat', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #0b0b14;
+      color: #e2e8f0;
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .bg-gradient-brand {
+      background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #0b0b14;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #2a2a4a;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #a855f7;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased custom-scrollbar min-h-screen flex flex-col justify-between selection:bg-purple-500 selection:text-white">
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-40 bg-brand-bg/90 backdrop-blur-md border-b border-brand-border/40 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-2 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-brand flex items-center justify-center text-white shadow-lg shadow-purple-500/30 group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-play text-lg ml-0.5"></i>
+        </div>
+        <span class="font-display font-extrabold text-2xl tracking-wider text-gradient uppercase">Cinevexo</span>
+      </a>
+
+      <!-- Desktop Search Bar -->
+      <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+        <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Search movies, series, directors..." class="w-full bg-brand-surface border border-brand-border/60 rounded-full py-2.5 pl-11 pr-4 text-sm text-slate-200 placeholder-slate-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all">
+      </div>
+
+      <!-- Right Navigation Actions -->
+      <div class="flex items-center gap-3 sm:gap-4">
+        <button onclick="toggleWatchlistDrawer()" class="relative p-2.5 rounded-full bg-brand-surface border border-brand-border/60 hover:border-purple-500/50 text-slate-300 hover:text-white transition-all">
+          <i class="fa-solid fa-bookmark"></i>
+          <span id="watchlistBadge" class="absolute -top-1 -right-1 bg-gradient-brand text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md">0</span>
+        </button>
+
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 rounded-xl bg-brand-surface border border-brand-border/60 text-slate-300 hover:text-white">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-10">
+
+    <!-- HERO CAROUSEL -->
+    <section class="relative rounded-3xl overflow-hidden bg-brand-surface border border-brand-border/40 shadow-2xl">
+      <div id="heroSlide" class="relative min-h-[420px] sm:min-h-[480px] flex items-end p-6 sm:p-12 transition-all duration-700 bg-cover bg-center">
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-bg via-brand-bg/60 to-transparent"></div>
+
+        <div class="relative z-10 max-w-2xl space-y-4">
+          <div class="flex items-center gap-2">
+            <span id="heroQuality" class="px-2.5 py-1 text-xs font-bold rounded bg-purple-600 text-white shadow-md shadow-purple-600/30">4K UHD</span>
+            <span id="heroRating" class="px-2.5 py-1 text-xs font-semibold rounded bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center gap-1">
+              <i class="fa-solid fa-star text-xs"></i> 8.9
+            </span>
+          </div>
+
+          <h1 id="heroTitle" class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight leading-tight">Loading...</h1>
+          <p id="heroDesc" class="text-slate-300 text-sm sm:text-base line-clamp-3">Loading details...</p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <button id="heroWatchBtn" onclick="openTrailer(currentHeroIndex)" class="px-6 py-3 rounded-xl bg-gradient-brand text-white font-semibold flex items-center gap-2 hover:opacity-95 transition-all shadow-lg shadow-purple-500/30">
+              <i class="fa-solid fa-play"></i> Watch Trailer
+            </button>
+            <button id="heroBookmarkBtn" onclick="toggleWatchlist(moviesData[currentHeroIndex].id)" class="px-6 py-3 rounded-xl bg-brand-surface/80 border border-brand-border hover:border-purple-500 text-white font-semibold flex items-center gap-2 transition-all">
+              <i class="fa-regular fa-bookmark"></i> Add to Watchlist
+            </button>
+          </div>
+        </div>
+
+        <div class="absolute bottom-6 right-6 z-10 flex gap-2">
+          <button onclick="prevHeroSlide()" class="w-10 h-10 rounded-full bg-brand-surface/80 border border-brand-border/60 hover:bg-purple-600 text-white flex items-center justify-center transition-all">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button onclick="nextHeroSlide()" class="w-10 h-10 rounded-full bg-brand-surface/80 border border-brand-border/60 hover:bg-purple-600 text-white flex items-center justify-center transition-all">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORY FILTER BUTTONS -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-display font-bold text-white flex items-center gap-2">
+          <span class="w-2 h-6 bg-gradient-brand rounded-full"></span> Explore Movies
+        </h2>
+      </div>
+
+      <div class="flex items-center gap-3 overflow-x-auto pb-2 custom-scrollbar">
+        <button onclick="filterCategory('all')" class="cat-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all whitespace-nowrap bg-gradient-brand text-white shadow-lg shadow-purple-500/20">
+          All Movies
+        </button>
+        <button onclick="filterCategory('Featured')" class="cat-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all whitespace-nowrap bg-brand-surface text-slate-300 border border-brand-border/60 hover:border-purple-500 hover:text-white">
+          Featured
+        </button>
+        <button onclick="filterCategory('Most Favorite')" class="cat-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all whitespace-nowrap bg-brand-surface text-slate-300 border border-brand-border/60 hover:border-purple-500 hover:text-white">
+          Most Favorite
+        </button>
+        <button onclick="filterCategory('Top IMDb')" class="cat-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all whitespace-nowrap bg-brand-surface text-slate-300 border border-brand-border/60 hover:border-purple-500 hover:text-white">
+          Top IMDb
+        </button>
+      </div>
+    </section>
+
+    <!-- MOVIE GRID -->
+    <section>
+      <div id="moviesGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+        <!-- Cards dynamically populated by JavaScript -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-16 bg-brand-surface border-t border-brand-border/60 py-10">
+    <div class="max-w-7xl mx-auto px-4 text-center text-slate-400 text-sm space-y-3">
+      <div class="flex items-center justify-center gap-2">
+        <span class="font-display font-extrabold text-xl text-gradient">Cinevexo</span>
+      </div>
+      <p>© 2026 Cinevexo Streaming. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- FLOATING CONTACT BUTTON -->
+  <button onclick="alert('Contact support: support@cinevexo.com')" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gradient-brand text-white shadow-xl shadow-purple-500/40 hover:scale-110 flex items-center justify-center transition-transform">
+    <i class="fa-solid fa-headset text-xl"></i>
+  </button>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    const moviesData = [
+      { 
+        id: 1, 
+        title: "Oppenheimer", 
+        category: "Top IMDb", 
+        quality: "4K UHD", 
+        rating: 8.9, 
+        year: 2023, 
+        poster: "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg", 
+        backdrop: "https://image.tmdb.org/t/p/original/fm6KqXpk3M2HVveHwCrBSSBaO0V.jpg", 
+        description: "The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb." 
+      },
+      { 
+        id: 2, 
+        title: "Dune: Part Two", 
+        category: "Featured", 
+        quality: "BluRay", 
+        rating: 8.6, 
+        year: 2024, 
+        poster: "https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg", 
+        backdrop: "https://image.tmdb.org/t/p/original/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg", 
+        description: "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family." 
+      },
+      { 
+        id: 3, 
+        title: "Interstellar", 
+        category: "Most Favorite", 
+        quality: "4K UHD", 
+        rating: 8.7, 
+        year: 2014, 
+        poster: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg", 
+        backdrop: "https://image.tmdb.org/t/p/original/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg", 
+        description: "When Earth becomes uninhabitable, a farmer and ex-NASA pilot is tasked to pilot a spacecraft to find a new planet." 
+      },
+      { 
+        id: 4, 
+        title: "The Batman", 
+        category: "Featured", 
+        quality: "WebRip", 
+        rating: 7.8, 
+        year: 2022, 
+        poster: "https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg", 
+        backdrop: "https://image.tmdb.org/t/p/original/b0PlSFdDwbyK0cf5RxwDpaOJQvQ.jpg", 
+        description: "When a sadistic serial killer begins murdering key political figures in Gotham, Batman is forced to investigate." 
+      },
+      { 
+        id: 5, 
+        title: "Spider-Man: Across the Spider-Verse", 
+        category: "Most Favorite", 
+        quality: "BluRay", 
+        rating: 8.7, 
+        year: 2023, 
+        poster: "https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg", 
+        backdrop: "https://image.tmdb.org/t/p/original/4HodYYKEIsGOdinkCi2UczTJ69I.jpg", 
+        description: "Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence." 
+      }
+    ];
+
+    let currentHeroIndex = 0;
+
+    function renderHero() {
+      const movie = moviesData[currentHeroIndex];
+      document.getElementById('heroSlide').style.backgroundImage = `url('${movie.backdrop}')`;
+      document.getElementById('heroTitle').innerText = movie.title;
+      document.getElementById('heroDesc').innerText = movie.description;
+      document.getElementById('heroQuality').innerText = movie.quality;
+      document.getElementById('heroRating').innerHTML = `<i class="fa-solid fa-star text-xs"></i> ${movie.rating}`;
+    }
+
+    function renderGrid(data) {
+      const grid = document.getElementById('moviesGrid');
+      grid.innerHTML = data.map(m => `
+        <div class="group relative rounded-2xl bg-brand-surface border border-brand-border/40 overflow-hidden shadow-lg hover:border-purple-500/50 transition-all">
+          <div class="relative aspect-[2/3] overflow-hidden">
+            <img src="${m.poster}" alt="${m.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <span class="absolute top-3 right-3 px-2 py-0.5 text-xs font-bold rounded bg-purple-600 text-white">${m.quality}</span>
+          </div>
+          <div class="p-4 space-y-1">
+            <h3 class="font-bold text-white text-base truncate">${m.title}</h3>
+            <p class="text-xs text-slate-400 line-clamp-2">${m.description}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function nextHeroSlide() {
+      currentHeroIndex = (currentHeroIndex + 1) % moviesData.length;
+      renderHero();
+    }
+
+    function prevHeroSlide() {
+      currentHeroIndex = (currentHeroIndex - 1 + moviesData.length) % moviesData.length;
+      renderHero();
+    }
+
+    function filterCategory(category) {
+      if(category === 'all') {
+        renderGrid(moviesData);
+      } else {
+        const filtered = moviesData.filter(m => m.category === category);
+        renderGrid(filtered);
+      }
+    }
+
+    function handleSearch(query) {
+      const q = query.toLowerCase();
+      const filtered = moviesData.filter(m => m.title.toLowerCase().includes(q) || m.description.toLowerCase().includes(q));
+      renderGrid(filtered);
+    }
+
+    function openTrailer(index) {
+      alert("Playing trailer for: " + moviesData[index].title);
+    }
+
+    function toggleWatchlist(id) {
+      alert("Added movie to Watchlist!");
+    }
+
+    // Initial Render
+    renderHero();
+    renderGrid(moviesData);
+  </script>
+</body>
+          </html>
+          
