@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cinevexo - Watch & Download Movies & TV Series</title>
+  
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -22,6 +24,7 @@
       }
     }
   </script>
+
   <style>
     body { background-color: #0b0b14; color: #e2e8f0; }
     .text-gradient { background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -42,10 +45,12 @@
         </div>
         <span class="font-display font-extrabold text-2xl tracking-wider text-gradient uppercase">Cinevexo</span>
       </a>
+
       <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
         <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-        <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Search movies, series, genres..." class="w-full bg-brand-surface border border-brand-border/60 rounded-full py-2.5 pl-11 pr-4 text-sm text-slate-200 placeholder-slate-400 focus:outline-none focus:border-purple-500">
+        <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Search 1000+ movies, series..." class="w-full bg-brand-surface border border-brand-border/60 rounded-full py-2.5 pl-11 pr-4 text-sm text-slate-200 placeholder-slate-400 focus:outline-none focus:border-purple-500">
       </div>
+
       <div class="flex items-center gap-3">
         <button onclick="openLoginModal()" class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-surface border border-brand-border/60 hover:border-purple-500 text-sm font-medium text-slate-200">
           <i class="fa-solid fa-user text-purple-400"></i> Login
@@ -56,6 +61,7 @@
 
   <!-- MAIN CONTENT -->
   <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-10">
+    <!-- HERO CAROUSEL -->
     <section class="relative rounded-3xl overflow-hidden bg-brand-surface border border-brand-border/40 shadow-2xl">
       <div id="heroSlide" class="relative min-h-[420px] sm:min-h-[480px] flex items-end p-6 sm:p-12 transition-all duration-700 bg-cover bg-center" style="background-image: url('https://image.tmdb.org/t/p/original/fm6KqXpk3M2HVveHwCrBSSBaO0V.jpg');">
         <div class="absolute inset-0 bg-gradient-to-t from-brand-bg via-brand-bg/60 to-transparent"></div>
@@ -84,6 +90,7 @@
       <div class="flex items-center gap-3 overflow-x-auto pb-2 custom-scrollbar">
         <button onclick="filterCategory('all')" class="px-5 py-2.5 rounded-full text-sm font-medium bg-gradient-brand text-white whitespace-nowrap">All Movies</button>
         <button onclick="filterCategory('Featured')" class="px-5 py-2.5 rounded-full text-sm font-medium bg-brand-surface text-slate-300 border border-brand-border/60 whitespace-nowrap">Featured</button>
+        <button onclick="filterCategory('Most Favorite')" class="px-5 py-2.5 rounded-full text-sm font-medium bg-brand-surface text-slate-300 border border-brand-border/60 whitespace-nowrap">Most Favorite</button>
         <button onclick="filterCategory('Top IMDb')" class="px-5 py-2.5 rounded-full text-sm font-medium bg-brand-surface text-slate-300 border border-brand-border/60 whitespace-nowrap">Top IMDb</button>
       </div>
     </section>
@@ -94,14 +101,51 @@
     </section>
   </main>
 
-  <!-- MODALS -->
+  <!-- FOOTER -->
+  <footer class="mt-16 bg-brand-surface border-t border-brand-border/60 py-10">
+    <div class="max-w-7xl mx-auto px-4 text-center text-slate-400 text-sm space-y-3">
+      <span class="font-display font-extrabold text-xl text-gradient">Cinevexo</span>
+      <p>© 2026 Cinevexo Streaming. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- FLOATING AI SUPPORT CHAT BUTTON -->
+  <button onclick="toggleChatbox()" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gradient-brand text-white shadow-xl flex items-center justify-center hover:scale-110 transition-transform">
+    <i class="fa-solid fa-comments text-xl"></i>
+  </button>
+
+  <!-- AI SUPPORT CHATBOX MODAL -->
+  <div id="chatboxModal" class="fixed bottom-24 right-6 z-50 hidden w-80 sm:w-96 bg-brand-surface border border-brand-border rounded-3xl shadow-2xl overflow-hidden flex flex-col h-[450px]">
+    <div class="bg-brand-card p-4 border-b border-brand-border flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-gradient-brand flex items-center justify-center text-white text-xs font-bold">AI</div>
+        <div>
+          <h4 class="font-bold text-sm text-white">Cinevexo Support</h4>
+          <p class="text-[10px] text-emerald-400 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Online</p>
+        </div>
+      </div>
+      <button onclick="toggleChatbox()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div id="chatMessages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs custom-scrollbar">
+      <div class="bg-brand-card p-3 rounded-2xl max-w-[85%] text-slate-200">
+        👋 Hello! Welcome to Cinevexo AI Support. Need a specific movie added or facing download issues? Ask me here!
+      </div>
+    </div>
+    <div class="p-3 bg-brand-card border-t border-brand-border flex gap-2">
+      <input type="text" id="chatInput" placeholder="Type your movie request..." class="flex-1 bg-brand-bg border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-purple-500" onkeypress="if(event.key === 'Enter') sendChatMessage()">
+      <button onclick="sendChatMessage()" class="px-4 py-2 rounded-xl bg-gradient-brand text-white font-semibold text-xs"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <!-- MOVIE DETAILS & DOWNLOAD MODAL -->
   <div id="movieModal" class="fixed inset-0 z-50 hidden bg-brand-bg/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="relative w-full max-w-2xl bg-brand-surface border border-brand-border rounded-3xl p-6 shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar">
-      <button onclick="closeMovieModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+      <button onclick="closeMovieModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 hover:text-white flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
       <div id="modalContent" class="space-y-6"></div>
     </div>
   </div>
 
+  <!-- LOGIN MODAL -->
   <div id="loginModal" class="fixed inset-0 z-50 hidden bg-brand-bg/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="relative w-full max-w-md bg-brand-surface border border-brand-border rounded-3xl p-8 shadow-2xl space-y-6">
       <button onclick="closeLoginModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
@@ -114,25 +158,10 @@
     </div>
   </div>
 
-  <div id="contactModal" class="fixed inset-0 z-50 hidden bg-brand-bg/80 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="relative w-full max-w-md bg-brand-surface border border-brand-border rounded-3xl p-8 shadow-2xl space-y-6">
-      <button onclick="closeContactModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
-      <h3 class="text-2xl font-display font-bold text-white text-center">Customer Support</h3>
-      <form onsubmit="handleSupportSubmit(event)" class="space-y-4">
-        <input type="text" required placeholder="Your Name" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-sm text-white">
-        <input type="email" required placeholder="Your Email" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-sm text-white">
-        <textarea rows="4" required placeholder="Movie name or issue..." class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-sm text-white"></textarea>
-        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-brand text-white font-semibold">Send Message</button>
-      </form>
-    </div>
-  </div>
-
-  <button onclick="openContactModal()" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gradient-brand text-white shadow-xl flex items-center justify-center hover:scale-110"><i class="fa-solid fa-headset text-xl"></i></button>
-
-  <!-- LINK TO SEPARATE MOVIES FILE -->
+  <!-- LINK TO MOVIES DATA FILE -->
   <script src="movies.js"></script>
 
-  <!-- MAIN APP LOGIC -->
+  <!-- CORE APP LOGIC (NEVER NEEDS TO BE CHANGED AGAIN) -->
   <script>
     let currentHeroIndex = 0;
     function renderHero() {
@@ -145,6 +174,7 @@
       document.getElementById('heroRating').innerHTML = `<i class="fa-solid fa-star text-xs"></i> ${movie.rating}`;
       document.getElementById('heroWatchBtn').setAttribute('onclick', `openMovieModal(${movie.id})`);
     }
+
     function renderGrid(data) {
       const grid = document.getElementById('moviesGrid');
       if(!grid) return;
@@ -161,32 +191,69 @@
         </div>
       `).join('');
     }
+
     function nextHeroSlide() { currentHeroIndex = (currentHeroIndex + 1) % moviesData.length; renderHero(); }
     function prevHeroSlide() { currentHeroIndex = (currentHeroIndex - 1 + moviesData.length) % moviesData.length; renderHero(); }
     function filterCategory(cat) { cat === 'all' ? renderGrid(moviesData) : renderGrid(moviesData.filter(m => m.category === cat)); }
     function handleSearch(q) { renderGrid(moviesData.filter(m => m.title.toLowerCase().includes(q.toLowerCase()) || m.description.toLowerCase().includes(q.toLowerCase()))); }
+
+    // MOVIE DETAILS & DOWNLOAD MODAL
     function openMovieModal(id) {
       const movie = moviesData.find(m => m.id === id);
       if(!movie) return;
+      
       document.getElementById('modalContent').innerHTML = `
-        <div class="flex flex-col sm:flex-row gap-6">
-          <img src="${movie.poster}" class="w-full sm:w-48 rounded-2xl object-cover shadow-lg" />
-          <div class="space-y-3">
-            <div class="flex items-center gap-2"><span class="px-2 py-0.5 text-xs font-bold rounded bg-purple-600 text-white">${movie.quality}</span><span class="text-amber-400 text-xs font-semibold"><i class="fa-solid fa-star"></i> ${movie.rating}</span></div>
-            <h2 class="text-2xl font-display font-bold text-white">${movie.title}</h2>
-            <p class="text-sm text-slate-300">${movie.description}</p>
-            <a href="${movie.downloadLink}" target="_blank" class="block w-full py-3 px-4 rounded-xl bg-gradient-brand text-white font-semibold text-center"><i class="fa-solid fa-download"></i> Download / Watch Link</a>
+        <div class="space-y-4">
+          <div class="relative rounded-2xl overflow-hidden aspect-video bg-cover bg-center" style="background-image: url('${movie.backdrop}')">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-surface to-transparent"></div>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-6 items-start">
+            <img src="${movie.poster}" class="w-36 rounded-xl object-cover shadow-lg -mt-16 relative z-10 border-2 border-brand-border" />
+            <div class="space-y-2 flex-1">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 text-xs font-bold rounded bg-purple-600 text-white">${movie.quality}</span>
+                <span class="text-amber-400 text-xs font-semibold"><i class="fa-solid fa-star"></i> ${movie.rating} (${movie.year})</span>
+              </div>
+              <h2 class="text-2xl font-display font-bold text-white">${movie.title}</h2>
+              <p class="text-sm text-slate-300 leading-relaxed">${movie.description}</p>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-brand-border">
+            <a href="${movie.downloadLink}" target="_blank" class="block w-full py-3.5 px-4 rounded-xl bg-gradient-brand text-white font-semibold text-center shadow-lg shadow-purple-500/30 hover:opacity-95 transition-all">
+              <i class="fa-solid fa-download mr-2"></i> Download High Quality Movie (${movie.quality})
+            </a>
           </div>
         </div>`;
       document.getElementById('movieModal').classList.remove('hidden');
     }
+
     function closeMovieModal() { document.getElementById('movieModal').classList.add('hidden'); }
+
+    // AI CHATBOX LOGIC
+    function toggleChatbox() {
+      const box = document.getElementById('chatboxModal');
+      box.classList.toggle('hidden');
+    }
+
+    function sendChatMessage() {
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if(!text) return;
+
+      const container = document.getElementById('chatMessages');
+      container.innerHTML += `<div class="bg-purple-600/20 border border-purple-500/30 p-3 rounded-2xl ml-auto max-w-[85%] text-slate-100 text-right">${text}</div>`;
+      input.value = '';
+      container.scrollTop = container.scrollHeight;
+
+      setTimeout(() => {
+        container.innerHTML += `<div class="bg-brand-card p-3 rounded-2xl max-w-[85%] text-slate-200">🤖 Got your request! Our team will add your movie or look into the issue shortly. Enjoy streaming on Cinevexo!</div>`;
+        container.scrollTop = container.scrollHeight;
+      }, 1000);
+    }
+
     function openLoginModal() { document.getElementById('loginModal').classList.remove('hidden'); }
     function closeLoginModal() { document.getElementById('loginModal').classList.add('hidden'); }
     function handleLogin(e) { e.preventDefault(); alert("Logged in successfully!"); closeLoginModal(); }
-    function openContactModal() { document.getElementById('contactModal').classList.remove('hidden'); }
-    function closeContactModal() { document.getElementById('contactModal').classList.add('hidden'); }
-    function handleSupportSubmit(e) { e.preventDefault(); alert("Support message sent!"); closeContactModal(); }
 
     renderHero();
     renderGrid(moviesData);
