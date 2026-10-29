@@ -48,7 +48,7 @@
 
       <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
         <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-        <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Search 1000+ movies, trailers..." class="w-full bg-brand-surface border border-brand-border/60 rounded-full py-2.5 pl-11 pr-4 text-sm text-slate-200 placeholder-slate-400 focus:outline-none focus:border-purple-500">
+        <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Search movies, trailers..." class="w-full bg-brand-surface border border-brand-border/60 rounded-full py-2.5 pl-11 pr-4 text-sm text-slate-200 placeholder-slate-400 focus:outline-none focus:border-purple-500">
       </div>
 
       <div class="flex items-center gap-3">
@@ -63,24 +63,24 @@
   <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-10">
     <!-- HERO CAROUSEL -->
     <section class="relative rounded-3xl overflow-hidden bg-brand-surface border border-brand-border/40 shadow-2xl">
-      <div id="heroSlide" class="relative min-h-[420px] sm:min-h-[480px] flex items-end p-6 sm:p-12 transition-all duration-700 bg-cover bg-center" style="background-image: url('https://image.tmdb.org/t/p/original/fm6KqXpk3M2HVveHwCrBSSBaO0V.jpg');">
+      <div id="heroSlide" class="relative min-h-[420px] sm:min-h-[480px] flex items-end p-6 sm:p-12 transition-all duration-700 bg-cover bg-center" style="background-image: url('');">
         <div class="absolute inset-0 bg-gradient-to-t from-brand-bg via-brand-bg/60 to-transparent"></div>
         <div class="relative z-10 max-w-2xl space-y-4">
           <div class="flex items-center gap-2">
-            <span id="heroQuality" class="px-2.5 py-1 text-xs font-bold rounded bg-purple-600 text-white">4K UHD</span>
-            <span id="heroRating" class="px-2.5 py-1 text-xs font-semibold rounded bg-amber-500/20 text-amber-400 border border-amber-500/30"><i class="fa-solid fa-star text-xs"></i> 8.9</span>
+            <span id="heroQuality" class="px-2.5 py-1 text-xs font-bold rounded bg-purple-600 text-white"></span>
+            <span id="heroRating" class="px-2.5 py-1 text-xs font-semibold rounded bg-amber-500/20 text-amber-400 border border-amber-500/30"></span>
           </div>
-          <h1 id="heroTitle" class="text-3xl sm:text-5xl font-display font-extrabold text-white">Oppenheimer</h1>
-          <p id="heroDesc" class="text-slate-300 text-sm sm:text-base line-clamp-3">The story of American scientist J. Robert Oppenheimer.</p>
+          <h1 id="heroTitle" class="text-3xl sm:text-5xl font-display font-extrabold text-white">Loading...</h1>
+          <p id="heroDesc" class="text-slate-300 text-sm sm:text-base line-clamp-3"></p>
           <div class="flex gap-4 pt-2">
-            <button id="heroWatchBtn" onclick="openMovieModal(1)" class="px-6 py-3 rounded-xl bg-gradient-brand text-white font-semibold flex items-center gap-2 shadow-lg shadow-purple-500/30">
+            <button id="heroWatchBtn" onclick="" class="px-6 py-3 rounded-xl bg-gradient-brand text-white font-semibold flex items-center gap-2 shadow-lg shadow-purple-500/30 cursor-pointer">
               <i class="fa-solid fa-play"></i> Watch Trailer / Download
             </button>
           </div>
         </div>
         <div class="absolute bottom-6 right-6 z-10 flex gap-2">
-          <button onclick="prevHeroSlide()" class="w-10 h-10 rounded-full bg-brand-surface/80 border border-brand-border/60 text-white flex items-center justify-center"><i class="fa-solid fa-chevron-left"></i></button>
-          <button onclick="nextHeroSlide()" class="w-10 h-10 rounded-full bg-brand-surface/80 border border-brand-border/60 text-white flex items-center justify-center"><i class="fa-solid fa-chevron-right"></i></button>
+          <button onclick="prevHeroSlide()" class="w-10 h-10 rounded-full bg-brand-surface/80 border border-brand-border/60 text-white flex items-center justify-center cursor-pointer"><i class="fa-solid fa-chevron-left"></i></button>
+          <button onclick="nextHeroSlide()" class="w-10 h-10 rounded-full bg-brand-surface/80 border border-brand-border/60 text-white flex items-center justify-center cursor-pointer"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
       </div>
     </section>
@@ -88,10 +88,10 @@
     <!-- CATEGORIES -->
     <section class="space-y-4">
       <div class="flex items-center gap-3 overflow-x-auto pb-2 custom-scrollbar">
-        <button onclick="filterCategory('all')" class="px-5 py-2.5 rounded-full text-sm font-medium bg-gradient-brand text-white whitespace-nowrap">All Movies</button>
-        <button onclick="filterCategory('Featured')" class="px-5 py-2.5 rounded-full text-sm font-medium bg-brand-surface text-slate-300 border border-brand-border/60 whitespace-nowrap">Featured</button>
-        <button onclick="filterCategory('Most Favorite')" class="px-5 py-2.5 rounded-full text-sm font-medium bg-brand-surface text-slate-300 border border-brand-border/60 whitespace-nowrap">Most Favorite</button>
-        <button onclick="filterCategory('Top IMDb')" class="px-5 py-2.5 rounded-full text-sm font-medium bg-brand-surface text-slate-300 border border-brand-border/60 whitespace-nowrap">Top IMDb</button>
+        <button onclick="filterCategory('all')" class="px-5 py-2.5 rounded-full text-sm font-medium bg-gradient-brand text-white whitespace-nowrap cursor-pointer">All Movies</button>
+        <button onclick="filterCategory('Featured')" class="px-5 py-2.5 rounded-full text-sm font-medium bg-brand-surface text-slate-300 border border-brand-border/60 whitespace-nowrap cursor-pointer">Featured</button>
+        <button onclick="filterCategory('Most Favorite')" class="px-5 py-2.5 rounded-full text-sm font-medium bg-brand-surface text-slate-300 border border-brand-border/60 whitespace-nowrap cursor-pointer">Most Favorite</button>
+        <button onclick="filterCategory('Top IMDb')" class="px-5 py-2.5 rounded-full text-sm font-medium bg-brand-surface text-slate-300 border border-brand-border/60 whitespace-nowrap cursor-pointer">Top IMDb</button>
       </div>
     </section>
 
@@ -109,15 +109,15 @@
       </div>
       
       <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-slate-400">
-        <button onclick="openPolicyModal('about')" class="hover:text-purple-400 transition-colors">About Us</button>
+        <button onclick="openPolicyModal('about')" class="hover:text-purple-400 transition-colors cursor-pointer">About Us</button>
         <span>•</span>
-        <button onclick="openPolicyModal('privacy')" class="hover:text-purple-400 transition-colors">Privacy Policy</button>
+        <button onclick="openPolicyModal('privacy')" class="hover:text-purple-400 transition-colors cursor-pointer">Privacy Policy</button>
         <span>•</span>
-        <button onclick="openPolicyModal('terms')" class="hover:text-purple-400 transition-colors">Terms of Service</button>
+        <button onclick="openPolicyModal('terms')" class="hover:text-purple-400 transition-colors cursor-pointer">Terms of Service</button>
         <span>•</span>
-        <button onclick="openPolicyModal('dmca')" class="hover:text-purple-400 transition-colors">DMCA Disclaimer</button>
+        <button onclick="openPolicyModal('dmca')" class="hover:text-purple-400 transition-colors cursor-pointer">DMCA Disclaimer</button>
         <span>•</span>
-        <button onclick="toggleChatbox()" class="hover:text-purple-400 transition-colors">Support</button>
+        <button onclick="toggleChatbox()" class="hover:text-purple-400 transition-colors cursor-pointer">Support</button>
       </div>
 
       <p class="text-xs text-slate-500">© 2026 Cinevexo Streaming. All rights reserved.</p>
@@ -125,7 +125,7 @@
   </footer>
 
   <!-- FLOATING AI SUPPORT CHAT BUTTON -->
-  <button onclick="toggleChatbox()" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gradient-brand text-white shadow-xl flex items-center justify-center hover:scale-110 transition-transform">
+  <button onclick="toggleChatbox()" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gradient-brand text-white shadow-xl flex items-center justify-center hover:scale-110 transition-transform cursor-pointer">
     <i class="fa-solid fa-comments text-xl"></i>
   </button>
 
@@ -139,7 +139,7 @@
           <p class="text-[10px] text-emerald-400 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Online</p>
         </div>
       </div>
-      <button onclick="toggleChatbox()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+      <button onclick="toggleChatbox()" class="text-slate-400 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
     </div>
     <div id="chatMessages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs custom-scrollbar">
       <div class="bg-brand-card p-3 rounded-2xl max-w-[85%] text-slate-200">
@@ -148,14 +148,14 @@
     </div>
     <div class="p-3 bg-brand-card border-t border-brand-border flex gap-2">
       <input type="text" id="chatInput" placeholder="Type your movie request..." class="flex-1 bg-brand-bg border border-brand-border rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-purple-500" onkeypress="if(event.key === 'Enter') sendChatMessage()">
-      <button onclick="sendChatMessage()" class="px-4 py-2 rounded-xl bg-gradient-brand text-white font-semibold text-xs"><i class="fa-solid fa-paper-plane"></i></button>
+      <button onclick="sendChatMessage()" class="px-4 py-2 rounded-xl bg-gradient-brand text-white font-semibold text-xs cursor-pointer"><i class="fa-solid fa-paper-plane"></i></button>
     </div>
   </div>
 
   <!-- POLICY MODAL -->
   <div id="policyModal" class="fixed inset-0 z-50 hidden bg-brand-bg/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="relative w-full max-w-2xl bg-brand-surface border border-brand-border rounded-3xl p-6 sm:p-8 shadow-2xl max-h-[85vh] overflow-y-auto custom-scrollbar">
-      <button onclick="closePolicyModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 hover:text-white flex items-center justify-center">
+      <button onclick="closePolicyModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 hover:text-white flex items-center justify-center cursor-pointer">
         <i class="fa-solid fa-xmark"></i>
       </button>
       <div id="policyModalContent" class="space-y-4 text-slate-300 text-sm leading-relaxed"></div>
@@ -165,7 +165,7 @@
   <!-- MOVIE DETAILS & TRAILER MODAL -->
   <div id="movieModal" class="fixed inset-0 z-50 hidden bg-brand-bg/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="relative w-full max-w-3xl bg-brand-surface border border-brand-border rounded-3xl p-6 shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar">
-      <button onclick="closeMovieModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 hover:text-white flex items-center justify-center z-20"><i class="fa-solid fa-xmark"></i></button>
+      <button onclick="closeMovieModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 hover:text-white flex items-center justify-center z-20 cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
       <div id="modalContent" class="space-y-6"></div>
     </div>
   </div>
@@ -173,12 +173,12 @@
   <!-- LOGIN MODAL -->
   <div id="loginModal" class="fixed inset-0 z-50 hidden bg-brand-bg/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="relative w-full max-w-md bg-brand-surface border border-brand-border rounded-3xl p-8 shadow-2xl space-y-6">
-      <button onclick="closeLoginModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+      <button onclick="closeLoginModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 flex items-center justify-center cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
       <h3 class="text-2xl font-display font-bold text-gradient text-center">Welcome to Cinevexo</h3>
       <form onsubmit="handleLogin(event)" class="space-y-4">
         <input type="email" required placeholder="Email Address" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-purple-500">
         <input type="password" required placeholder="Password" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-purple-500">
-        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-brand text-white font-semibold">Sign In</button>
+        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-brand text-white font-semibold cursor-pointer">Sign In</button>
       </form>
     </div>
   </div>
@@ -190,9 +190,10 @@
   <script>
     let currentHeroIndex = 0;
     function renderHero() {
-      if(!moviesData || moviesData.length === 0) return;
+      if(!window.moviesData || moviesData.length === 0) return;
       const movie = moviesData[currentHeroIndex];
       document.getElementById('heroSlide').style.backgroundImage = `url('${movie.backdrop}')`;
+      document.getElementById('heroTitleinnerText') = '';
       document.getElementById('heroTitle').innerText = movie.title;
       document.getElementById('heroDesc').innerText = movie.description;
       document.getElementById('heroQuality').innerText = movie.quality;
@@ -206,7 +207,7 @@
       grid.innerHTML = data.map(m => `
         <div onclick="openMovieModal(${m.id})" class="group relative rounded-2xl bg-brand-surface border border-brand-border/40 overflow-hidden shadow-lg hover:border-purple-500/50 cursor-pointer transition-all">
           <div class="relative aspect-[2/3] overflow-hidden">
-            <img src="${m.poster}" alt="${m.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="${m.poster}" alt="${m.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
             <span class="absolute top-3 right-3 px-2 py-0.5 text-xs font-bold rounded bg-purple-600 text-white">${m.quality}</span>
             <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <div class="w-12 h-12 rounded-full bg-purple-600/90 text-white flex items-center justify-center shadow-lg"><i class="fa-solid fa-play ml-1"></i></div>
@@ -220,12 +221,28 @@
       `).join('');
     }
 
-    function nextHeroSlide() { currentHeroIndex = (currentHeroIndex + 1) % moviesData.length; renderHero(); }
-    function prevHeroSlide() { currentHeroIndex = (currentHeroIndex - 1 + moviesData.length) % moviesData.length; renderHero(); }
-    function filterCategory(cat) { cat === 'all' ? renderGrid(moviesData) : renderGrid(moviesData.filter(m => m.category === cat)); }
-    function handleSearch(q) { renderGrid(moviesData.filter(m => m.title.toLowerCase().includes(q.toLowerCase()) || m.description.toLowerCase().includes(q.toLowerCase()))); }
+    function nextHeroSlide() { 
+      if(!window.moviesData) return;
+      currentHeroIndex = (currentHeroIndex + 1) % moviesData.length; 
+      renderHero(); 
+    }
+    
+    function prevHeroSlide() { 
+      if(!window.moviesData) return;
+      currentHeroIndex = (currentHeroIndex - 1 + moviesData.length) % moviesData.length; 
+      renderHero(); 
+    }
 
-    // MOVIE DETAILS WITH TRAILER EMBED
+    function filterCategory(cat) { 
+      if(!window.moviesData) return;
+      cat === 'all' ? renderGrid(moviesData) : renderGrid(moviesData.filter(m => m.category === cat)); 
+    }
+
+    function handleSearch(q) { 
+      if(!window.moviesData) return;
+      renderGrid(moviesData.filter(m => m.title.toLowerCase().includes(q.toLowerCase()) || m.description.toLowerCase().includes(q.toLowerCase()))); 
+    }
+
     function openMovieModal(id) {
       const movie = moviesData.find(m => m.id === id);
       if(!movie) return;
@@ -262,7 +279,7 @@
     }
 
     function closeMovieModal() { 
-      document.getElementById('modalContent').innerHTML = ''; // Stop video playback when closed
+      document.getElementById('modalContent').innerHTML = ''; 
       document.getElementById('movieModal').classList.add('hidden'); 
     }
 
@@ -298,10 +315,4 @@
       container.scrollTop = container.scrollHeight;
 
       setTimeout(() => {
-        container.innerHTML += `<div class="bg-brand-card p-3 rounded-2xl max-w-[85%] text-slate-200">🤖 Got your request! Our team will add your movie or look into the issue shortly. Enjoy streaming on Cinevexo!</div>`;
-        container.scrollTop = container.scrollHeight;
-      }, 1000);
-    }
-
-    function openLoginModal() { document.getElementById('loginModal').classList.remove('hidden'); }
-    function closeLoginModal() { document.getElementById('loginModal').classLi
+        container.innerHTML += `<div class="bg-brand-card p-3 rounded-2xl max-w-[85%] text-slate-200">🤖 Got your request! Our team will add your movie or look int
