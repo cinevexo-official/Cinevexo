@@ -9,6 +9,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/fm6KqXpk3M2HVveHwCrBSSBaO0V.jpg", 
     description: "The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.", 
+    trailer: "uYPbbksJxIg",
     downloadLink: "#" 
   },
   { 
@@ -21,6 +22,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg", 
     description: "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators.", 
+    trailer: "Way9Dexny3w",
     downloadLink: "#" 
   },
   { 
@@ -33,6 +35,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg", 
     description: "When Earth becomes uninhabitable, a farmer and ex-NASA pilot is tasked to pilot a spacecraft.", 
+    trailer: "zSWdZVtXT7E",
     downloadLink: "#" 
   },
   { 
@@ -45,6 +48,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/b0PlSFdDwbyK0cf5RxwDpaOJQvQ.jpg", 
     description: "When a sadistic serial killer begins murdering key political figures in Gotham, Batman investigates.", 
+    trailer: "mqqft2x_Aa4",
     downloadLink: "#" 
   },
   { 
@@ -57,6 +61,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/4HodYYKEIsGOdinkCi2UczTJ69I.jpg", 
     description: "Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People.", 
+    trailer: "cqGjhVJWtEg",
     downloadLink: "#" 
   },
   { 
@@ -69,6 +74,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/5gzzkR7y3hnY8AD1wXjCnVlHbaV.jpg", 
     description: "Jake Sully lives with his newfound family formed on the extrasolar moon Pandora.", 
+    trailer: "d9MyW72ELq0",
     downloadLink: "#" 
   },
   { 
@@ -81,6 +87,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/s3TBrRGB1iav7gFOCNx3H31MoES.jpg", 
     description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task.", 
+    trailer: "YoHD9XEInc0",
     downloadLink: "#" 
   },
   { 
@@ -93,6 +100,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0dZ.jpg", 
     description: "After the devastating events of Infinity War, the universe is in ruins due to the efforts of Thanos.", 
+    trailer: "TcMBFSGVi1c",
     downloadLink: "#" 
   },
   { 
@@ -105,6 +113,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/h8gHn0OzBoaHPsYseKOIoqnmfCY.jpg", 
     description: "John Wick uncovers a path to defeating The High Table, but must face a new enemy with global alliances.", 
+    trailer: "qEVUtrk8_B4",
     downloadLink: "#" 
   },
   { 
@@ -117,6 +126,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/hZkgoQYus5vegHoetLkCJzb17zJ.jpg", 
     description: "A former Roman general sets out to exact vengeance against the corrupt emperor who murdered his family.", 
+    trailer: "P53MeSBqb-U",
     downloadLink: "#" 
   },
   { 
@@ -129,6 +139,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/nMKdUUUNsid0ifLmsHEwH6G7X8Q.jpg", 
     description: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests.", 
+    trailer: "EXeTwQWrcwY",
     downloadLink: "#" 
   },
   { 
@@ -141,6 +152,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/rr7E0NoGKxvbkb89eR1GwfoYjpA.jpg", 
     description: "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.", 
+    trailer: "O-MQsY-Kghw",
     downloadLink: "#" 
   },
   { 
@@ -153,6 +165,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/vRQnzOn4HjIMX4IBq9nHnFXbsSi.jpg", 
     description: "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring.", 
+    trailer: "V75dMMIW2B4",
     downloadLink: "#" 
   },
   { 
@@ -165,6 +178,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/qdIMHd4sEfJSckdVJfKQvisL02m.jpg", 
     description: "The presidencies of Kennedy and Johnson, the Vietnam War, and other historical events unfold from the perspective of an Alabama man.", 
+    trailer: "bLvqoJwKm2g",
     downloadLink: "#" 
   },
   { 
@@ -177,6 +191,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/7u3pxc0K1wx32IleAkLv78MKgrw.jpg", 
     description: "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.", 
+    trailer: "vKQi3bBA1y8",
     downloadLink: "#" 
   },
   { 
@@ -189,6 +204,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/uUiId6WG2kKZXmNgjrX0fcVJKiL.jpg", 
     description: "Teenager Miles Morales becomes the Spider-Man of his universe, and must cross paths with five counterpart dimensions.", 
+    trailer: "g4Hbz2jLxvQ",
     downloadLink: "#" 
   },
   { 
@@ -201,6 +217,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/5YZbUmjbMa3ClvSW1Wj3D6XGolb.jpg", 
     description: "Still reeling from the loss of Gamora, Peter Quill must rally his team to defend the universe and protect one of their own.", 
+    trailer: "u3V5KDXRCHw",
     downloadLink: "#" 
   },
   { 
@@ -213,6 +230,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/y2Ca1neKke2mGPMaHzlCNDVZqsK.jpg", 
     description: "A listless Wade Wilson toils away in civilian life. But when his home world faces an existential threat, Wade must reluctantly suit up.", 
+    trailer: "73_1biulkYk",
     downloadLink: "#" 
   },
   { 
@@ -225,6 +243,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/62HCnUTziyWcpDaBO2i1DX17ljH.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/Aa9TLpNpBMyRmu8sPJ8acz87nvj.jpg", 
     description: "After thirty years, Maverick is still pushing the envelope as a top naval aviator, confronting ghosts of his past.", 
+    trailer: "giXco2jaZ_4",
     downloadLink: "#" 
   },
   { 
@@ -237,6 +256,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/n6bUvigpRFqSwmPp1m2YADdbRBc.jpg", 
     description: "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City.", 
+    trailer: "zAGVQLHvwOY",
     downloadLink: "#" 
   },
   { 
@@ -249,6 +269,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/TU9NIjwzjoKPwQHoHshkFcQUCG.jpg", 
     description: "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.", 
+    trailer: "5xH0HfJHsaY",
     downloadLink: "#" 
   },
   { 
@@ -261,6 +282,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/7fn624j5lj3xTme2SgiLCeuedmO.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/6bbZ6XIO6M38pXSOKIPZCGSaJdf.jpg", 
     description: "A promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor.", 
+    trailer: "7d_jQycdQGo",
     downloadLink: "#" 
   },
   { 
@@ -273,6 +295,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/wRXLAw4l17XciXCPLgYo4M4DJpu.jpg", 
     description: "Lion cub and future king Simba searches for his identity. His world is shattered after the tragic death of his father.", 
+    trailer: "4sj1MT05lAA",
     downloadLink: "#" 
   },
   { 
@@ -285,6 +308,7 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/lmZFxXgJE3vgrciwuDib0N8CfQo.jpg", 
     description: "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos.", 
+    trailer: "6ZfuNTqbHE8",
     downloadLink: "#" 
   },
   { 
@@ -297,6 +321,8 @@ const moviesData = [
     poster: "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg", 
     backdrop: "https://image.tmdb.org/t/p/original/iQFcwSGbZXMkeyKrxbPnwnRo5fl.jpg", 
     description: "With Spider-Man's identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds appear.", 
+    trailer: "JfVOs4VSpmA",
     downloadLink: "#" 
   }
 ];
+    
