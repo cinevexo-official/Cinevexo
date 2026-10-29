@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cinevexo - Watch & Download Movies & TV Series</title>
+  <title>Cinevexo - Watch Trailers & Download Movies</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -48,7 +48,7 @@
 
       <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
         <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-        <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Search 1000+ movies, series..." class="w-full bg-brand-surface border border-brand-border/60 rounded-full py-2.5 pl-11 pr-4 text-sm text-slate-200 placeholder-slate-400 focus:outline-none focus:border-purple-500">
+        <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Search 1000+ movies, trailers..." class="w-full bg-brand-surface border border-brand-border/60 rounded-full py-2.5 pl-11 pr-4 text-sm text-slate-200 placeholder-slate-400 focus:outline-none focus:border-purple-500">
       </div>
 
       <div class="flex items-center gap-3">
@@ -74,7 +74,7 @@
           <p id="heroDesc" class="text-slate-300 text-sm sm:text-base line-clamp-3">The story of American scientist J. Robert Oppenheimer.</p>
           <div class="flex gap-4 pt-2">
             <button id="heroWatchBtn" onclick="openMovieModal(1)" class="px-6 py-3 rounded-xl bg-gradient-brand text-white font-semibold flex items-center gap-2 shadow-lg shadow-purple-500/30">
-              <i class="fa-solid fa-play"></i> Watch / Download
+              <i class="fa-solid fa-play"></i> Watch Trailer / Download
             </button>
           </div>
         </div>
@@ -101,14 +101,13 @@
     </section>
   </main>
 
-  <!-- FOOTER WITH MANDATORY POLICY LINKS FOR ADSENSE -->
+  <!-- FOOTER -->
   <footer class="mt-16 bg-brand-surface border-t border-brand-border/60 py-10">
     <div class="max-w-7xl mx-auto px-4 text-center space-y-6">
       <div class="flex items-center justify-center gap-2">
         <span class="font-display font-extrabold text-2xl text-gradient">Cinevexo</span>
       </div>
       
-      <!-- Policy Pages Links -->
       <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-slate-400">
         <button onclick="openPolicyModal('about')" class="hover:text-purple-400 transition-colors">About Us</button>
         <span>•</span>
@@ -116,12 +115,12 @@
         <span>•</span>
         <button onclick="openPolicyModal('terms')" class="hover:text-purple-400 transition-colors">Terms of Service</button>
         <span>•</span>
-        <button onclick="openPolicyModal('dmca')" class="hover:text-purple-400 transition-colors">DMCA & Legal Disclaimer</button>
+        <button onclick="openPolicyModal('dmca')" class="hover:text-purple-400 transition-colors">DMCA Disclaimer</button>
         <span>•</span>
-        <button onclick="toggleChatbox()" class="hover:text-purple-400 transition-colors">Contact Support</button>
+        <button onclick="toggleChatbox()" class="hover:text-purple-400 transition-colors">Support</button>
       </div>
 
-      <p class="text-xs text-slate-500">© 2026 Cinevexo Streaming. All rights reserved. Free Entertainment Portal.</p>
+      <p class="text-xs text-slate-500">© 2026 Cinevexo Streaming. All rights reserved.</p>
     </div>
   </footer>
 
@@ -153,22 +152,20 @@
     </div>
   </div>
 
-  <!-- LEGAL POLICIES & ABOUT US MODAL -->
+  <!-- POLICY MODAL -->
   <div id="policyModal" class="fixed inset-0 z-50 hidden bg-brand-bg/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="relative w-full max-w-2xl bg-brand-surface border border-brand-border rounded-3xl p-6 sm:p-8 shadow-2xl max-h-[85vh] overflow-y-auto custom-scrollbar">
       <button onclick="closePolicyModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 hover:text-white flex items-center justify-center">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <div id="policyModalContent" class="space-y-4 text-slate-300 text-sm leading-relaxed">
-        <!-- Content dynamic via JS -->
-      </div>
+      <div id="policyModalContent" class="space-y-4 text-slate-300 text-sm leading-relaxed"></div>
     </div>
   </div>
 
-  <!-- MOVIE DETAILS & DOWNLOAD MODAL -->
+  <!-- MOVIE DETAILS & TRAILER MODAL -->
   <div id="movieModal" class="fixed inset-0 z-50 hidden bg-brand-bg/80 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="relative w-full max-w-2xl bg-brand-surface border border-brand-border rounded-3xl p-6 shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar">
-      <button onclick="closeMovieModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 hover:text-white flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+    <div class="relative w-full max-w-3xl bg-brand-surface border border-brand-border rounded-3xl p-6 shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar">
+      <button onclick="closeMovieModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-card text-slate-300 hover:text-white flex items-center justify-center z-20"><i class="fa-solid fa-xmark"></i></button>
       <div id="modalContent" class="space-y-6"></div>
     </div>
   </div>
@@ -211,6 +208,9 @@
           <div class="relative aspect-[2/3] overflow-hidden">
             <img src="${m.poster}" alt="${m.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <span class="absolute top-3 right-3 px-2 py-0.5 text-xs font-bold rounded bg-purple-600 text-white">${m.quality}</span>
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <div class="w-12 h-12 rounded-full bg-purple-600/90 text-white flex items-center justify-center shadow-lg"><i class="fa-solid fa-play ml-1"></i></div>
+            </div>
           </div>
           <div class="p-4 space-y-1">
             <h3 class="font-bold text-white text-base truncate">${m.title}</h3>
@@ -225,18 +225,24 @@
     function filterCategory(cat) { cat === 'all' ? renderGrid(moviesData) : renderGrid(moviesData.filter(m => m.category === cat)); }
     function handleSearch(q) { renderGrid(moviesData.filter(m => m.title.toLowerCase().includes(q.toLowerCase()) || m.description.toLowerCase().includes(q.toLowerCase()))); }
 
-    // MOVIE DETAILS & DOWNLOAD MODAL
+    // MOVIE DETAILS WITH TRAILER EMBED
     function openMovieModal(id) {
       const movie = moviesData.find(m => m.id === id);
       if(!movie) return;
       
+      const trailerEmbed = movie.trailer ? 
+        `<div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-brand-border shadow-xl">
+           <iframe class="w-full h-full" src="https://www.youtube.com/embed/${movie.trailer}?autoplay=1" title="${movie.title} Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+         </div>` : 
+        `<div class="relative rounded-2xl overflow-hidden aspect-video bg-cover bg-center" style="background-image: url('${movie.backdrop}')">
+           <div class="absolute inset-0 bg-gradient-to-t from-brand-surface to-transparent"></div>
+         </div>`;
+
       document.getElementById('modalContent').innerHTML = `
-        <div class="space-y-4">
-          <div class="relative rounded-2xl overflow-hidden aspect-video bg-cover bg-center" style="background-image: url('${movie.backdrop}')">
-            <div class="absolute inset-0 bg-gradient-to-t from-brand-surface to-transparent"></div>
-          </div>
-          <div class="flex flex-col sm:flex-row gap-6 items-start">
-            <img src="${movie.poster}" class="w-36 rounded-xl object-cover shadow-lg -mt-16 relative z-10 border-2 border-brand-border" />
+        <div class="space-y-5">
+          ${trailerEmbed}
+          <div class="flex flex-col sm:flex-row gap-5 items-start">
+            <img src="${movie.poster}" class="w-28 sm:w-36 rounded-xl object-cover shadow-lg border border-brand-border" />
             <div class="space-y-2 flex-1">
               <div class="flex items-center gap-2">
                 <span class="px-2 py-0.5 text-xs font-bold rounded bg-purple-600 text-white">${movie.quality}</span>
@@ -246,45 +252,56 @@
               <p class="text-sm text-slate-300 leading-relaxed">${movie.description}</p>
             </div>
           </div>
-          <div class="pt-4 border-t border-brand-border">
+          <div class="pt-2 border-t border-brand-border">
             <a href="${movie.downloadLink}" target="_blank" class="block w-full py-3.5 px-4 rounded-xl bg-gradient-brand text-white font-semibold text-center shadow-lg shadow-purple-500/30 hover:opacity-95 transition-all">
-              <i class="fa-solid fa-download mr-2"></i> Download High Quality Movie (${movie.quality})
+              <i class="fa-solid fa-download mr-2"></i> Download Full Movie (${movie.quality})
             </a>
           </div>
         </div>`;
       document.getElementById('movieModal').classList.remove('hidden');
     }
 
-    function closeMovieModal() { document.getElementById('movieModal').classList.add('hidden'); }
+    function closeMovieModal() { 
+      document.getElementById('modalContent').innerHTML = ''; // Stop video playback when closed
+      document.getElementById('movieModal').classList.add('hidden'); 
+    }
 
-    // LEGAL POLICY MODAL HANDLER FOR ADSENSE
     function openPolicyModal(type) {
       const contentDiv = document.getElementById('policyModalContent');
       if(type === 'about') {
-        contentDiv.innerHTML = `
-          <h3 class="text-2xl font-display font-bold text-gradient">About Cinevexo</h3>
-          <p>Welcome to <strong>Cinevexo</strong>, your premier portal for movie news, trailer discovery, and entertainment indexing. Our platform aims to provide film enthusiasts with up-to-date metadata, High-Definition artwork, and comprehensive movie reviews from across global cinema.</p>
-          <p>We are dedicated to building a fast, accessible, and user-friendly web portal powered by modern web technologies.</p>`;
+        contentDiv.innerHTML = `<h3 class="text-2xl font-display font-bold text-gradient">About Cinevexo</h3><p>Welcome to Cinevexo, your premier portal for movie trailers, metadata, and film discovery.</p>`;
       } else if(type === 'privacy') {
-        contentDiv.innerHTML = `
-          <h3 class="text-2xl font-display font-bold text-gradient">Privacy Policy</h3>
-          <p>At Cinevexo, accessible from our domain, your privacy is one of our top priorities. This Privacy Policy document contains types of information that is collected and recorded by Cinevexo and how we use it.</p>
-          <h4 class="font-bold text-white">Log Files & Cookies</h4>
-          <p>Cinevexo follows a standard procedure of using log files. These files log visitors when they visit websites. We may use third-party vendors, such as Google or Ad Networks, which use cookies to serve ads based on users' prior visits to our site.</p>
-          <h4 class="font-bold text-white">Third Party Privacy Policies</h4>
-          <p>Cinevexo's Privacy Policy does not apply to other advertisers or websites. We advise you to consult the respective Privacy Policies of these third-party ad servers for more detailed information.</p>`;
+        contentDiv.innerHTML = `<h3 class="text-2xl font-display font-bold text-gradient">Privacy Policy</h3><p>At Cinevexo, user privacy is important to us. We use standard log files and non-personally identifiable cookies.</p>`;
       } else if(type === 'terms') {
-        contentDiv.innerHTML = `
-          <h3 class="text-2xl font-display font-bold text-gradient">Terms of Service</h3>
-          <p>By accessing and using <strong>Cinevexo</strong>, you accept and agree to be bound by the terms and provision of this agreement. Any participation in this service will constitute acceptance of this agreement.</p>
-          <p>All content provided on this website is for informational and educational entertainment purposes only. Users agree not to misuse the web platform or engage in unlawful activities.</p>`;
+        contentDiv.innerHTML = `<h3 class="text-2xl font-display font-bold text-gradient">Terms of Service</h3><p>By using Cinevexo, you agree to our fair usage and content indexing policy.</p>`;
       } else if(type === 'dmca') {
-        contentDiv.innerHTML = `
-          <h3 class="text-2xl font-display font-bold text-gradient">DMCA & Legal Disclaimer</h3>
-          <p><strong>Cinevexo</strong> operates as an automated metadata index and movie catalog website. We do <strong>NOT</strong> host, store, or upload any video files, media content, or copyrighted copyright material on our servers.</p>
-          <p>All content featured on Cinevexo is fetched via open APIs and third-party links publicly available on the internet. If you believe your copyrighted work is indexed here without authorization, please contact us via our support panel for immediate link removal within 48 hours.</p>`;
+        contentDiv.innerHTML = `<h3 class="text-2xl font-display font-bold text-gradient">DMCA Disclaimer</h3><p>Cinevexo does not host media files on its servers. All trailers belong to YouTube/TMDB open APIs.</p>`;
       }
       document.getElementById('policyModal').classList.remove('hidden');
     }
 
-   
+    function closePolicyModal() { document.getElementById('policyModal').classList.add('hidden'); }
+
+    function toggleChatbox() {
+      const box = document.getElementById('chatboxModal');
+      box.classList.toggle('hidden');
+    }
+
+    function sendChatMessage() {
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if(!text) return;
+
+      const container = document.getElementById('chatMessages');
+      container.innerHTML += `<div class="bg-purple-600/20 border border-purple-500/30 p-3 rounded-2xl ml-auto max-w-[85%] text-slate-100 text-right">${text}</div>`;
+      input.value = '';
+      container.scrollTop = container.scrollHeight;
+
+      setTimeout(() => {
+        container.innerHTML += `<div class="bg-brand-card p-3 rounded-2xl max-w-[85%] text-slate-200">🤖 Got your request! Our team will add your movie or look into the issue shortly. Enjoy streaming on Cinevexo!</div>`;
+        container.scrollTop = container.scrollHeight;
+      }, 1000);
+    }
+
+    function openLoginModal() { document.getElementById('loginModal').classList.remove('hidden'); }
+    function closeLoginModal() { document.getElementById('loginModal').classLi
